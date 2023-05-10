@@ -1,0 +1,17 @@
+# Define UI (HTML webpage) that draws a histogram
+  # fluidPage auto adjusts to browser dimensions
+  
+  # Define server logic required to draw a histogram
+  # contains functions for server (computer) to build the app
+  # I think server gets run every time
+  # Guess: plotOutput("distPlot") in ui.R calls output$distPlot, which uses
+    # the number of bins selected as "input"
+    
+- follow these instructions: https://shiny.rstudio.com/articles/basics.html 
+  - this is following example 3
+- for this example, faithful seems to already be built-in dataseet
+  
+- Server notes:
+  # Reactive expression: returns dataset corresponding to user choice
+  # Rendering expresssions: create summary and view values
+    # only executed when dependencies change (input$dataset or input$obs)

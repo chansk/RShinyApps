@@ -1,0 +1,13 @@
+# Define UI (HTML webpage) that draws a histogram
+  # fluidPage auto adjusts to browser dimensions
+  
+  # Define server logic required to draw a histogram
+  # contains functions for server (computer) to build the app
+  # I think server gets run every time
+  # Guess: plotOutput("distPlot") in ui.R calls output$distPlot, which uses
+    # the number of bins selected as "input"
+    
+- follow these instructions: https://shiny.rstudio.com/articles/basics.html 
+  - Example 2!
+  
+  

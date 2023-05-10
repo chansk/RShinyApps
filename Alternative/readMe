@@ -1,0 +1,8 @@
+We're going to make an intro page with two panels
+- images will be held within www folder
+- ui.R is the HTML webpage
+  - fluidPage fxn auto adjusts to browser dimensions
+- server.R contains functions for server (computer) to build the app
+  - I think server gets run every time
+  - Guess: plotOutput("distPlot") in ui.R calls output$distPlot, which uses
+    - the number of bins selected as "input"

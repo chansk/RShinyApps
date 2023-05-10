@@ -1,0 +1,11 @@
+---
+title: "Practice"
+output: html_document
+date: "2023-05-05"
+---
+
+```{r setup, include=FALSE}
+library(data.table)
+data <- fread("./Data/Influenza_Laboratory-Confirmed_Cases_By_County__Beginning_2009-10_Season.csv")
+
+```
