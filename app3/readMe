@@ -22,3 +22,9 @@
 # Reactive expression: returns dataset corresponding to user choice
   - changing input values causes parts of R code to re-execute
 - Reactive values: values which change in response to user, or over-time
+  - most commonly created using "input" object
+    - input object is passed to shinyServer function, which accesses web page's user input fields
+      - looks like grabbing value from list/DF, but actually reading a reactive value
+  - assigning reactive values to "output" object allows us to view them on the web page
+    - output$view will be reactivated anytime the reactive value, input$obs,
+    or the reactive expression, datasetInput(), are changed
