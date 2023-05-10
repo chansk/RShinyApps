@@ -12,6 +12,13 @@
 - for this example, faithful seems to already be built-in dataseet
   
 - Server notes:
-  # Reactive expression: returns dataset corresponding to user choice
-  # Rendering expresssions: create summary and view values
-    # only executed when dependencies change (input$dataset or input$obs)
+
+    
+- main advantage of Shiny web framework
+  - easy for user input values to go into R server, 
+  then results of R code written as output values back to web page
+# Rendering expresssions: create summary and view values
+  # only executed when dependencies change (input$dataset or input$obs)
+# Reactive expression: returns dataset corresponding to user choice
+  - changing input values causes parts of R code to re-execute
+- Reactive values: values which change in response to user, or over-time

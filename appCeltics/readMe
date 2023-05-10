@@ -8,6 +8,13 @@
     # the number of bins selected as "input"
     
 - follow these instructions: https://shiny.rstudio.com/articles/basics.html 
-  - Example 2!
+  - Example 2
   
   
+- Eventual goals (by tab)
+  - Basic data profiling
+  - Basic plots (line, scatter, etc.)
+  - Logistic regression for whether or not win
+  - Linear regression for number of points
+  - Time series analysis for X changing by season
+  - Spatial analysis by shot selection location (distance to basket)
