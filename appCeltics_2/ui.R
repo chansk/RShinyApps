@@ -21,7 +21,8 @@ shinyUI(fluidPage(
 
         # Create a main panel to display outputs
         mainPanel(
-          plotOutput("distPlot")
+          plotOutput("distPlot"),
+          plotOutput("distPlot2")
           #   tabsetPanel(type = "tabs",
           #               tabPanel("Plot", plotOutput("distPlot")),
           #               tabPanel("Summary", verbatimTextOutput("summary")),
