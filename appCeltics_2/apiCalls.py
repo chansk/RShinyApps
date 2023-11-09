@@ -25,7 +25,9 @@ df = data.league_leaders.get_data_frame()
 
 
 # %% 
-#columns_list = df.columns.tolist()
-#print(columns_list)
+columns_list = df.columns.tolist()
+print(columns_list)
 # %%
-#df.head()
+pd.set_option('display.max_columns', 100)
+df.head()
+# %%

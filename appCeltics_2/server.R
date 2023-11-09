@@ -13,6 +13,8 @@ RETICULATE_PYTHON="venvnew/bin/python" # Attention: try running first without th
 # for actual app run, may need to drop additional appCeltics/
 py_run_file(paste0(getwd(),"/apiCalls.py"))
 
+# Not needed, but this is how we read in other R scripts from current directory
+# source("data.R") 
 
 # server-side code block, which defines three arguments
 shinyServer(function(input, output, session) {
@@ -44,6 +46,22 @@ shinyServer(function(input, output, session) {
       plot(r_df$MIN, r_df$PTS, 
            xlab = "Minutes Played", ylab = "Points",
            main = "Scatter Plot 1")
+    })
+    
+    # Create scatter plot 2
+    output$scatterPlot2 <- renderPlot({
+      filtered_data <- subset(r_df, TEAM == input$team_selector)
+      plot(filtered_data$MIN, filtered_data$PTS, 
+           xlab = "Minutes Played", ylab = "Points",
+           main = "Scatter Plot 2")
+    })
+    
+    # Create scatter plot 3
+    output$scatterPlot3 <- renderPlot({
+      filtered_data <- subset(r_df, PTS > input$pts_threshold)
+      plot(filtered_data$MIN, filtered_data$PTS, 
+           xlab = "Minutes Played", ylab = "Points",
+           main = "Scatter Plot 3")
     })
     
     
