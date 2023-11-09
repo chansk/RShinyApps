@@ -1,4 +1,5 @@
-# library(shiny)
+library(shiny)
+library(reticulate)
 # above should be unnecesary if I have it in global.R
 
 # Define UI (HTML webpage) that draws a histogram
@@ -20,11 +21,11 @@ shinyUI(fluidPage(
 
         # Create a main panel to display outputs
         mainPanel(
-            plotOutput("distPlot")
-        #   tabsetPanel(type = "tabs",
-        #               tabPanel("Plot", plotOutput("distPlot")),
-        #               tabPanel("Summary", verbatimTextOutput("summary")),
-        #               tabPanel("Table", tableOutput("table")))
+          plotOutput("distPlot")
+          #   tabsetPanel(type = "tabs",
+          #               tabPanel("Plot", plotOutput("distPlot")),
+          #               tabPanel("Summary", verbatimTextOutput("summary")),
+          #               tabPanel("Table", tableOutput("table")))
         )
     )
 ))

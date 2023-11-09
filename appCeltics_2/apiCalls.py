@@ -1,3 +1,5 @@
+# %%
+
 # use_python("/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10", required = T)
 # Hit Run at top to switch to running .py instead of .r
 from nba_api.stats.endpoints import playercareerstats
@@ -20,3 +22,10 @@ test_dict = career.get_dict()
 data = endpoints.leagueleaders.LeagueLeaders() 
 # Our "data" variable now has built in functions such as creating a dataframe for our data
 df = data.league_leaders.get_data_frame()
+
+
+# %% 
+#columns_list = df.columns.tolist()
+#print(columns_list)
+# %%
+#df.head()
