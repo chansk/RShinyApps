@@ -8,3 +8,8 @@ numeric_column_names <- function(df) {
   numeric_cols <- sapply(df, is.numeric)
   names(numeric_cols)[numeric_cols]
 }
+
+# looks like we are having trouble deploying because secret key is having 
+# trouble being recognized due to leading with a number. 
+# Have tried replacing apostrophes with quotation marks, only quotation marks, etc. 
+# Next may try deploying on Heroku
