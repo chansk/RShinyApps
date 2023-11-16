@@ -1,5 +1,6 @@
 library(shiny)
 library(reticulate)
+library(DT)
 
 # may need to restart R in between switches:
 # use_virtualenv("venvnew/bin/activate") # may need this
@@ -31,7 +32,7 @@ shinyServer(function(input, output, session) {
     output$distPlot <- renderPlot({
 
         # generate bins based on input$bins from ui.R
-        x    <- r_df[,"AST_TOV"] # extracts second column of 'faithful' dataset
+        x    <- r_df[,"AST_TOV"]
         # input$bins utilizes bin variable to set length.out
         bins <- seq(min(x), max(x), length.out = input$bins + 1) 
 
@@ -58,10 +59,60 @@ shinyServer(function(input, output, session) {
     
     # Create scatter plot 3
     output$scatterPlot3 <- renderPlot({
-      filtered_data <- subset(r_df, PTS > input$pts_threshold)
-      plot(filtered_data$MIN, filtered_data$PTS, 
+      filtered_data <- subset(r_df, PTS >= input$pts_threshold & TEAM == input$team_selector)
+      plot(filtered_data$MIN, filtered_data$PTS,
            xlab = "Minutes Played", ylab = "Points",
-           main = "Scatter Plot 3")
+           main = paste("Scatter Plot 4: ", "PTS >= ", input$pts_threshold," & Team = ", input$team_selector))
+    })
+    
+    output$scatterPlot4 <- renderPlot({
+      filtered_data <- subset(r_df, PTS >= input$pts_threshold & TEAM == input$team_selector)
+      plot(filtered_data$MIN, filtered_data[, input$y_axis_selector], 
+           xlab = "Minutes Played", ylab = input$y_axis_selector,
+           main = paste("Stats vs. Minutes Played: ", "PTS >= ", input$pts_threshold," & Team = ", input$team_selector))
+    })
+    
+    # trying filtered_data outside of renderPlot() fxn
+    # filtered_data <- reactive({
+    #   subset(r_df, PTS >= input$pts_threshold & TEAM == input$team_selector)
+    # })
+    
+    filtered_data <- reactive({
+      subset(r_df, PTS >= input$pts_threshold & TEAM == input$team_selector)
+    })
+    
+    # filtered_data <- reactive({
+    #   subset(mtcars, mpg >= input$mpg_slider[1] & mpg <= input$mpg_slider[2] & hp >= input$hp_slider[1] & hp <= input$hp_slider[2])
+    # })
+    
+    output$scatterPlot5 <- renderPlot({
+      
+      # Use the filtered_data reactive expression
+      filtered_data_subset <- filtered_data()
+      
+      plot(filtered_data_subset$MIN, filtered_data_subset[, input$y_axis_selector], 
+           xlab = "Minutes Played", ylab = input$y_axis_selector,
+           main = paste("Stats vs. Minutes Played: ", "PTS >= ", input$pts_threshold," & Team = ", input$team_selector))
+    })
+    
+    # Render the DataTable
+    output$table <- DT::renderDataTable({
+      # Use the filtered_data reactive expression
+      filtered_data_subset <- filtered_data()
+
+      filtered_data_subset
+    })
+
+    output$fullTable <- DT::renderDataTable({
+      r_df  # Display the entire dataset
+    })
+    
+    # Define some example plots for each tab
+    output$plot1 <- renderPlot({
+      plot(rnorm(100), main = "Plot for Tab 1")
+    })
+    output$plot2 <- renderPlot({
+      plot(runif(100), main = "Plot for Tab 2")
     })
     
     
